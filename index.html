@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Quote Generator - CodeAlpha</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
+    .card { background: #ffffff; padding: 40px; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); max-width: 500px; width: 100%; text-align: center; }
+    h1 { font-size: 1.5rem; color: #333; margin-bottom: 20px; }
+    .quote-text { font-size: 1.25rem; color: #4a4a4a; font-style: italic; margin-bottom: 15px; line-height: 1.5; }
+    .quote-author { font-weight: 600; color: #764ba2; margin-bottom: 30px; text-align: right; }
+    button { background-color: #667eea; color: #fff; border: none; padding: 12px 24px; font-size: 1rem; border-radius: 8px; cursor: pointer; transition: background 0.3s; }
+    button:hover { background-color: #5a67d8; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Random Quote Generator</h1>
+    <p class="quote-text" id="quote">"Loading quote..."</p>
+    <p class="quote-author" id="author">- Author</p>
+    <button id="new-quote-btn">New Quote</button>
+  </div>
+
+  <script>
+    const quotes = [
+      { quote: "The only way to do great work is to love what you do.", author: "Steve Jobs" },
+      { quote: "Strive not to be a success, but rather to be of value.", author: "Albert Einstein" },
+      { quote: "It always seems impossible until it's done.", author: "Nelson Mandela" },
+      { quote: "Believe you can and you're halfway there.", author: "Theodore Roosevelt" },
+      { quote: "The future belongs to those who believe in the beauty of their dreams.", author: "Eleanor Roosevelt" }
+    ];
+
+    const quoteEl = document.getElementById('quote');
+    const authorEl = document.getElementById('author');
+    const btn = document.getElementById('new-quote-btn');
+
+    function getRandomQuote() {
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      const selected = quotes[randomIndex];
+      quoteEl.textContent = `"${selected.quote}"`;
+      authorEl.textContent = `- ${selected.author}`;
+    }
+
+    btn.addEventListener('click', getRandomQuote);
+    window.onload = getRandomQuote;
+  </script>
+</body>
+</html>
